@@ -4,7 +4,7 @@
 <div class="containter custom-login">
     <div class="row">
         <div class="col-sm-4 col-sm-offset-4">
-            <form action="login" method="POST">
+            <form action="login" method="POST"> //dodali smo post metodu
                 <div class="form-group">
                     @csrf
                    
