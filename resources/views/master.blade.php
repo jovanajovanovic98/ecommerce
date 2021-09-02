@@ -35,5 +35,26 @@
         .slider-text{
             background color: #c0c0c029 !important;
         }
+        .trending-img{
+            height: 100px;
+        }
+        .trending-item{
+            float:left;
+            width:20%;
+        }
+        .trending-wrapper{
+            margin:20px;
+        }
+        .detail-img{
+            height:200px;
+        }
+        .search-box{
+            width:500px !important;
+        }
+        .cart-list-devider{
+            border-bottom:1px splid #ccc;
+            margin-bottom:20px;
+            padding-bottom:20px;
+        }
     </style>
 </html>

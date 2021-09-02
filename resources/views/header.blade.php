@@ -1,4 +1,12 @@
-<nav class="navbar navbar-default my_navbar">
+<?php
+use App\Http\Controllers\ProductController;
+$total=0;
+if(Session::has('user'))
+{
+  $total=ProductController::cartItem();
+}
+?>
+<nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,13 +16,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand my_brand" href="/">Sweet tooth</a>
+      <a class="navbar-brand my_brand" href="/">Musical musical</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <!-- <li class="active"><a href="#">Home</a></li> -->
+
+        <li class="active"><a href="#">Home</a></li> 
+        <li><a href="/api/myorders">Orders</a></li>
         
         
       </ul>
@@ -25,22 +35,25 @@
         <button type="submit" class="btn btn-default">Search</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="/api/cartlist">cart({{$total}})</a></li>
         @if(Session::has('user'))
-        <li class=""><a href="myorders">~Me~</a></li>
-        <li><a href="cartList">Cart({{$total}})</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Session::get('user')['name']}}
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/logout">Logout</a></li>
-            <!-- <li><a href="profile">My profile</a></li> -->
-          </ul>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Session::get('user')['name']}}
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/logout">Logout</a></li>
+         
+        </ul>
+      </li>
+      @else
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Register</a></li>
+
+      @endif
+
+
         </li>
-        @else
-        <li><a href="/login">Login</a></li>
-        <li><a href="/register">Register</a></li>
-        @endif
       </ul>
-    </div><!-- /.navbar-collapse -->
+  </div> <!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
